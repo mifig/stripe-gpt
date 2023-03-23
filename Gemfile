@@ -78,3 +78,5 @@ group :test do
 end
 
 gem "stripe"
+gem 'stripe_event'
+gem "interactor-rails", "~> 2.0"
