@@ -1,0 +1,20 @@
+<h1>New subscription!</h1>
+
+<%= form_with url: subscriptions_path, 
+              method: :post, 
+              id: "subscription-form", 
+              data: { 
+                controller: "stripe",
+                stripe_publishable_key_value: Rails.configuration.stripe[:publishable_key],
+                action: "submit->stripe#createSubscription"
+              } do |f| %>
+  <%= f.label :email %>
+  <%= f.text_field :stripeEmail, data: { stripe_target: "email" } %>
+
+  <div class="form-group">
+    <%= f.label "Credit Card", class: "form-label" %>
+    <div id="card-element" class="form-control" data-stripe-target="cardElement"></div>
+    <div id="card-errors" role="alert" data-stripe-target="cardErrors"></div>
+  </div>
+  <%= f.submit "Subscribe", class: "btn btn-primary" %>
+<% end %>

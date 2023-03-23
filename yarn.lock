@@ -75,6 +75,11 @@
   resolved "https://registry.yarnpkg.com/@rails/actioncable/-/actioncable-7.0.4.tgz#70a3ca56809f7aaabb80af2f9c01ae51e1a8ed41"
   integrity sha512-tz4oM+Zn9CYsvtyicsa/AwzKZKL+ITHWkhiu7x+xF77clh2b4Rm+s6xnOgY/sGDWoFWZmtKsE95hxBPkgQQNnQ==
 
+"@stripe/stripe-js@^1.51.0":
+  version "1.51.0"
+  resolved "https://registry.yarnpkg.com/@stripe/stripe-js/-/stripe-js-1.51.0.tgz#d64bf6de7c4acd4bda528de82ee0c8dfc778dd0f"
+  integrity sha512-hr75oz/bGuVSNOOVB/DiwjduvB1GG/RJxj8PKF6Z6p0BamFgmLPQBEDPM4aiqBdEjn5WZhdo2vYwgn+X/pzhkw==
+
 "@types/eslint-scope@^3.7.3":
   version "3.7.4"
   resolved "https://registry.yarnpkg.com/@types/eslint-scope/-/eslint-scope-3.7.4.tgz#37fc1223f0786c39627068a12e94d6e6fc61de16"
