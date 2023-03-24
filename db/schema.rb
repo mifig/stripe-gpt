@@ -10,9 +10,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_23_103515) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_24_102805) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "plans", id: false, force: :cascade do |t|
+    t.string "stripe_product_id", null: false
+    t.string "stripe_name"
+    t.string "stripe_default_price_id"
+    t.text "stripe_description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["stripe_product_id"], name: "index_plans_on_stripe_product_id", unique: true
+  end
+
+  create_table "prices", id: false, force: :cascade do |t|
+    t.string "stripe_price_id"
+    t.string "stripe_product_id"
+    t.string "stripe_recurrance_interval"
+    t.integer "stripe_recurrance_interval_count"
+    t.integer "stripe_unit_amount"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["stripe_price_id"], name: "index_prices_on_stripe_price_id", unique: true
+  end
 
   create_table "subscriptions", force: :cascade do |t|
     t.string "email"

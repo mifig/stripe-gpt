@@ -77,6 +77,9 @@ group :test do
   gem "webdrivers"
 end
 
+# >>>>> WALLIM:
 gem "stripe"
 gem 'stripe_event'
 gem "interactor-rails", "~> 2.0"
+gem 'money-rails'
+# rails g money_rails:initializer
