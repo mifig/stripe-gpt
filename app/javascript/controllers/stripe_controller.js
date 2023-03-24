@@ -30,14 +30,14 @@ export default class extends Controller {
         } else  {
           this.#stripePaymentHandler(result.paymentMethod)
         }
-      })      
+      })
   }
 
   #stripePaymentHandler(paymentMethod) {
     const form = this.element
     const hiddenInput = document.createElement('input')
     hiddenInput.setAttribute('type', 'hidden')
-    hiddenInput.setAttribute('name', 'stripePaymentMethod')
+    hiddenInput.setAttribute('name', 'stripe_payment_method')
     hiddenInput.setAttribute('value', paymentMethod.id)
     form.appendChild(hiddenInput)
     form.submit()

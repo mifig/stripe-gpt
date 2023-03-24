@@ -1,0 +1,14 @@
+<div class="mt-3 mx-4">
+  <h1>Choose your plan</h1>
+
+  <div class="d-flex justify-content-center gap-3">
+    <% @plans.each do |plan| %>
+      <%= link_to plan_path(plan), class: "text-decoration-none text-center" do %>
+        <div class="px-3 py-4" style="border-radius: 12px; background: rgba(0,0,0,0.1)">
+          <h3><%= plan.stripe_name %></h3>
+          <p><%= plan.stripe_description %></p>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>

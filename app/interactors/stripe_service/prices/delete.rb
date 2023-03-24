@@ -1,4 +1,4 @@
-module StripeSubscription
+module StripeService
   module Prices
     class Delete
       include Interactor
