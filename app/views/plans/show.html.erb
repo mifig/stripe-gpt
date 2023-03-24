@@ -3,5 +3,7 @@
   <p><%= @plan.stripe_description %></p>
   <p><%= humanized_money_with_symbol(@plan.stripe_price) %> p/ <%= @plan.stripe_recurrance_interval %></p>
 
-  <%= link_to "Subscribe!", new_plan_subscription_path(@plan), class: "btn btn-primary" %>
+  <%= simple_form_for [@plan, @subscription] do |f| %>
+    <%= f.submit "Subscribe!", class: "btn btn-primary" %>
+  <% end %>
 </div>

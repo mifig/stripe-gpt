@@ -5,12 +5,17 @@ class SubscriptionsController < ApplicationController
   end
   
   def create
-    StripeService::Subscriptions::Subscribe.call(params: params)
-    
-    redirect_to root_path, notice: "Subscription successfuly created!"
+    @subscription = Subscription.create(
+      stripe_customer_id: current_user.stripe_customer_id,
+      plan: @plan
+    )
+    session_interactor = StripeService::Subscriptions::Subscribe.call(params: params, stripe_price_id: @plan.stripe_default_price_id, user: current_user)
+    @subscription.update(stripe_checkout_session_id: session_interactor.session.id)
+
+    redirect_to new_subscription_payment_path(@subscription)
   rescue Stripe::CardError => e
     flash[:error] = e.message
-    redirect_to new_subscription_path
+    redirect_to new_subscription_payment_path(@subscription)
   end
   
   def set_plan

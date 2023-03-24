@@ -1,0 +1,10 @@
+<h1><%= @subscription.plan.stripe_name %></h1>
+<p><%= humanized_money_with_symbol(@subscription.plan.stripe_price) %> p/ <%= @subscription.plan.stripe_recurrance_interval %></p>
+
+<button data-controller="stripe" 
+        data-action="click->stripe#checkoutSession"
+        data-stripe-session-id-value="<%= @subscription.stripe_checkout_session_id %>"
+        data-stripe-publishable-key-value="<%= Rails.configuration.stripe[:publishable_key] %>"
+        class="btn btn-primary">
+        Pay!
+</button>

@@ -3,6 +3,7 @@
   <h2><%= humanized_money_with_symbol(@plan.stripe_price) %> p/ <%= @plan.stripe_recurrance_interval %></h2>
 
   <div class="mt-3">
+    <%# FORM FOR CUSTOM CARD: %>
     <%= form_with url: plan_subscriptions_path(@plan),
                   id: "subscription-form", 
                   data: { 

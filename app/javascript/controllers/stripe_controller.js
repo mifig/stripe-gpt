@@ -4,16 +4,27 @@ import {loadStripe} from '@stripe/stripe-js'
 // Connects to data-controller="stripe"
 export default class extends Controller {
 
-  static targets = [ "cardElement", "cardErrors", "email" ]
-  static values = { publishableKey: String }
+  // static targets = [ "cardElement", "cardErrors", "email" ]
+  static values = { 
+    publishableKey: String,
+    sessionId: String
+  }
 
   async connect() {
     this.stripe = await loadStripe(this.publishableKeyValue)
-    this.card = this.stripe.elements().create('card')
-    this.card.mount(this.cardElementTarget)
-    this.card.addEventListener('change', this.#displayErrors.bind(this))
+    // this.card = this.stripe.elements().create('card')
+    // this.card.mount(this.cardElementTarget)
+    // this.card.addEventListener('change', this.#displayErrors.bind(this))
   }
 
+  checkoutSession() {
+    this.stripe.redirectToCheckout({
+      sessionId: this.sessionIdValue,
+    })
+  }
+
+
+  // Previous Custom Stripe Element developmen:
   createSubscription(event) {
     event.preventDefault()
 

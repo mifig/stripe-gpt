@@ -1,5 +1,8 @@
 require "active_support/core_ext/integer/time"
 
+# >>>> Wallim
+Rails.application.routes.default_url_options[:host] = "http://localhost:3000"
+
 Rails.application.configure do
   config.hosts << /\A[a-z\d-]+\.eu\.ngrok\.io\z/
 

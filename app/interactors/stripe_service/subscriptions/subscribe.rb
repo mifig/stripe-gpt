@@ -3,7 +3,8 @@ module StripeService
     class Subscribe
       include Interactor::Organizer
 
-      organize Checkout, FindCreateCustomer, AddPaymentMethod, CreateUpdateSubscription
+      organize CheckoutSession
+      # FindCreateCustomer, AddPaymentMethod, CreateUpdateSubscription
     end
   end
 end

@@ -5,5 +5,6 @@ class PlansController < ApplicationController
 
   def show
     @plan = Plan.find_by(stripe_name: params[:stripe_name])
+    @subscription = Subscription.new
   end
 end

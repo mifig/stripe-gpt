@@ -9,6 +9,10 @@ Rails.application.routes.draw do
   resources :plans, only: [:index, :show], param: :stripe_name do 
     resources :subscriptions, only: [:new, :create]
   end
+
+  resources :subscriptions, only: [] do
+    resources :payments, only: [:new]
+  end
   
   mount StripeEvent::Engine, at: '/stripe-webhooks'
 end
