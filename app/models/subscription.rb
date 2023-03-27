@@ -7,6 +7,10 @@ class Subscription < ApplicationRecord
   belongs_to  :plan, 
               primary_key: :stripe_product_id, 
               foreign_key: :stripe_product_id
+  
+  has_one :invoice, 
+          foreign_key: :stripe_subscription_id, 
+          primary_key: :stripe_subscription_id
 
   enum status: { 
     pending: 0, 

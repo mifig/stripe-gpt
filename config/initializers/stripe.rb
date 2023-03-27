@@ -53,8 +53,18 @@ StripeEvent.configure do |events|
     StripeService::Subscriptions::Update.call(subscription: subscription)
   end
 
+  events.subscribe 'customer.subscription.updated' do |event|
+    subscription = event.data.object
+    StripeService::Subscriptions::Update.call(subscription: subscription)
+  end
+
   # INVOICES:
   events.subscribe 'invoice.payment_succeeded' do |event|
+    invoice = event.data.object
+    StripeService::Invoices::Create.call(invoice: invoice)
+  end
+
+  events.subscribe 'invoice.payment_failed' do |event|
     invoice = event.data.object
     StripeService::Invoices::Create.call(invoice: invoice)
   end

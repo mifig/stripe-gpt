@@ -14,7 +14,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_27_181024) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "invoices", force: :cascade do |t|
+  create_table "invoices", id: false, force: :cascade do |t|
     t.string "stripe_invoice_id"
     t.integer "stripe_amount_paid"
     t.integer "stripe_amount_remaining"
@@ -24,6 +24,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_27_181024) do
     t.boolean "stripe_paid"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["stripe_invoice_id"], name: "index_invoices_on_stripe_invoice_id", unique: true
   end
 
   create_table "plans", id: false, force: :cascade do |t|

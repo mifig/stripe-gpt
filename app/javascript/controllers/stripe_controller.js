@@ -19,7 +19,7 @@ export default class extends Controller {
 
   checkoutSession() {
     this.stripe.redirectToCheckout({
-      sessionId: this.sessionIdValue,
+      sessionId: this.sessionIdValue
     })
   }
 

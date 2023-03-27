@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   # >>>>> WALLIM:
   get "success", to: "pages#success"
   get "failure", to: "pages#failure"
+  get "profile", to: "pages#profile"
   root "plans#index"
   
   resources :plans, only: [:index, :show], param: :stripe_name do 
