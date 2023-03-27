@@ -9,6 +9,8 @@ module StripeService
           success_url: success_url,
           cancel_url: failure_url,
           mode: 'subscription',
+          customer: (context.user.stripe_customer_id if context.user.stripe_customer_id),
+          customer_email: (context.user.email unless context.user.stripe_customer_id),
           line_items: [{
             # For metered billing, do not pass quantity
             quantity: 1,

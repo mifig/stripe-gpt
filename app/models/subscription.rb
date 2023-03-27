@@ -1,6 +1,12 @@
 class Subscription < ApplicationRecord
-  belongs_to :user, primary_key: :stripe_customer_id, foreign_key: :stripe_customer_id
-  belongs_to :plan, primary_key: :stripe_product_id, foreign_key: :stripe_product_id
+  belongs_to  :user
+              # primary_key: :stripe_customer_id, 
+              # foreign_key: :stripe_customer_id,
+              # optional: true
+
+  belongs_to  :plan, 
+              primary_key: :stripe_product_id, 
+              foreign_key: :stripe_product_id
 
   enum status: { 
     pending: 0, 

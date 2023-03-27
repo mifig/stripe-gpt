@@ -40,4 +40,22 @@ StripeEvent.configure do |events|
     price = event.data.object
     StripeService::Prices::Delete.call(price: price)
   end
+
+  # CUSTOMERS:
+  events.subscribe 'customer.created' do |event|
+    customer = event.data.object
+    StripeService::Customers::Create.call(customer: customer)
+  end
+
+  # SUBSCRIPTIONS:
+  events.subscribe 'customer.subscription.created' do |event|
+    subscription = event.data.object
+    StripeService::Subscriptions::Update.call(subscription: subscription)
+  end
+
+  # INVOICES:
+  events.subscribe 'invoice.payment_succeeded' do |event|
+    invoice = event.data.object
+    StripeService::Invoices::Create.call(invoice: invoice)
+  end
 end
