@@ -4,6 +4,9 @@
   <p><%= humanized_money_with_symbol(@plan.stripe_price) %> p/ <%= @plan.stripe_recurrance_interval %></p>
 
   <%= simple_form_for [@plan, @subscription] do |f| %>
+    <% if @plan.stripe_name == "Company" %>
+      <%= f.input :quantity, as: :integer %>
+    <% end %>
     <%= f.submit "Subscribe!", class: "btn btn-primary" %>
   <% end %>
 </div>

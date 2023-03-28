@@ -13,7 +13,7 @@ module StripeService
           customer_email: (context.user.email unless context.user.stripe_customer_id),
           line_items: [{
             # For metered billing, do not pass quantity
-            quantity: 1,
+            quantity: context.params.dig(:subscription, :quantity).present? ? context.params.dig(:subscription, :quantity).to_i : 1,
             price: context.stripe_price_id
           }]
         })
