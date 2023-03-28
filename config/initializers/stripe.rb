@@ -48,6 +48,7 @@ StripeEvent.configure do |events|
   end
 
   # SUBSCRIPTIONS:
+  # Status to active is only updated in subscription.updated webhook event after payment of invoice
   events.subscribe 'customer.subscription.created' do |event|
     subscription = event.data.object
     StripeService::Subscriptions::Update.call(subscription: subscription)

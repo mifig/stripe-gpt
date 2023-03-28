@@ -8,9 +8,9 @@ class Subscription < ApplicationRecord
               primary_key: :stripe_product_id, 
               foreign_key: :stripe_product_id
   
-  has_one :invoice, 
-          foreign_key: :stripe_subscription_id, 
-          primary_key: :stripe_subscription_id
+  has_many  :invoices, 
+            foreign_key: :stripe_subscription_id, 
+            primary_key: :stripe_subscription_id
 
   enum status: { 
     pending: 0, 
