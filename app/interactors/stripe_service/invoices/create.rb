@@ -11,6 +11,7 @@ module StripeService
           stripe_amount_paid: context.invoice.amount_paid,
           stripe_amount_remaining: context.invoice.amount_remaining,
           stripe_invoice_pdf: context.invoice.invoice_pdf,
+          stripe_hosted_invoice_url: context.invoice.hosted_invoice_url,
           stripe_paid: context.invoice.paid
         )
       end
