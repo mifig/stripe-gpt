@@ -1,6 +1,4 @@
 class Subscription < ApplicationRecord
-  attr_accessor :quantity
-
   belongs_to  :user
               # primary_key: :stripe_customer_id, 
               # foreign_key: :stripe_customer_id,

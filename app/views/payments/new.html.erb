@@ -1,5 +1,6 @@
 <h1><%= @subscription.plan.stripe_name %></h1>
-<p><%= humanized_money_with_symbol(@subscription.plan.stripe_price) %> p/ <%= @subscription.plan.stripe_recurrance_interval %></p>
+<p><strong>TOTAL:</strong> <%= humanized_money_with_symbol(@subscription.plan.stripe_price * @quantity.to_i) %> p/ <%= @subscription.plan.stripe_recurrance_interval %></p>
+<p><strong>Quantity:</strong> <%= @quantity %> - <%= humanized_money_with_symbol(@subscription.plan.stripe_price) %> p/ <%= @subscription.plan.stripe_recurrance_interval %></p>
 
 <button data-controller="stripe" 
         data-action="click->stripe#checkoutSession"

@@ -1,15 +1,12 @@
 class SubscriptionsController < ApplicationController
-  before_action :set_plan, only: [:new, :create]
+  before_action :set_plan, only: [:create]
   before_action :set_subscription, only: [:create]
-
-  def new
-  end
   
   def create
     session_interactor = StripeService::Subscriptions::CheckoutSession.call(params: params, stripe_price_id: @plan.stripe_default_price_id, user: current_user)
     @subscription.update(stripe_checkout_session_id: session_interactor.session.id)
     
-    redirect_to new_subscription_payment_path(@subscription)
+    redirect_to new_subscription_payment_path(@subscription, stripe_quantity: params.dig(:subscription, :stripe_quantity))
   rescue Stripe::CardError => e
     flash[:error] = e.message
     redirect_to root_path

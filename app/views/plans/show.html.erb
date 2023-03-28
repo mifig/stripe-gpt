@@ -5,7 +5,7 @@
 
   <%= simple_form_for [@plan, @subscription] do |f| %>
     <% if @plan.stripe_name == "Company" %>
-      <%= f.input :quantity, as: :integer %>
+      <%= f.input :stripe_quantity %>
     <% end %>
     <%= f.submit "Subscribe!", class: "btn btn-primary" %>
   <% end %>
